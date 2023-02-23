@@ -10,13 +10,7 @@ function SearchPage() {
 
   const handleSubmit = async (searchTerm: string) => {
     const test = await dispatch(fetchPokemon(searchTerm));
-
-    if (error) {
-      console.log(test);
-      return "oooooppppp";
-    } else {
-      return navigate(`/details/${searchTerm}`);
-    }
+    navigate({ pathname: "/details/", search: `?term=${searchTerm}` });
   };
 
   return (

@@ -27,6 +27,7 @@ export interface PokemonDetails {
   name: string;
   locations: any;
   error: boolean;
+  showLoading: boolean;
 }
 
 export interface Error {
@@ -46,6 +47,7 @@ const initialState = {
   locations: [],
   pokemonEvolution: [],
   error: false,
+  showLoading: false,
 } as PokemonDetails;
 
 export const pokemonSlice = createSlice({
@@ -73,19 +75,27 @@ export const pokemonSlice = createSlice({
       state.name = name;
       state.id = id;
       state.abilities = abilities.map((ability: any) => ability.ability.name);
-      state.moves = moves.map((move: any) => move.move.name);
+      state.moves = moves.map((move: any) =>
+        move.move.name.replaceAll("-", " ")
+      );
       state.types = types.map((type: any) => type.type.name);
-      state.locations = location.map(
-        (location: any) => location.location_area.name
+      state.locations = location.map((location: any) =>
+        location.location_area.name.replaceAll("-", " ")
       );
       state.color = color.name;
-      state.varieties = varieties.map((variety: any) => variety.pokemon.name);
+      state.varieties = varieties.map((variety: any) =>
+        variety.pokemon.name.replaceAll("-", " ")
+      );
       state.gender = gender_rate;
       state.evolutions = pokemonEvolution.chain;
+      state.showLoading = false;
     });
     builder.addCase(fetchPokemon.rejected, (state, action) => {
       console.log(action.error);
       state.error = true;
+    });
+    builder.addCase(fetchPokemon.pending, (state) => {
+      state.showLoading = true;
     });
   },
 });

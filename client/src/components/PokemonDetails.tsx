@@ -3,11 +3,15 @@ import PokemonImage from "./PokemonImage";
 import "./pokemon-details.scss";
 import Table from "./Table";
 import Accordion from "./Accordion";
-// import { fetchPokemon } from "../store/pokemonSlice";
-// import { useEffect } from "react";
+import { useEffect } from "react";
+import { fetchPokemon } from "../store/pokemonSlice";
+import { useSearchParams } from "react-router-dom";
 
 function PokemonDetails() {
-  // const dispatch = useAppDispatch();
+  const [searchParams] = useSearchParams();
+  const searchTerm = searchParams.get("term") as string;
+
+  const dispatch = useAppDispatch();
 
   const [id, moves, name, locations] = useAppSelector((state) => [
     state.pokemon.id,
@@ -16,9 +20,9 @@ function PokemonDetails() {
     state.pokemon.locations,
   ]);
 
-  // useEffect(() => {
-  //   dispatch(fetchPokemon());
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchPokemon(searchTerm));
+  }, []);
 
   return (
     <div>

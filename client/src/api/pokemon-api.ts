@@ -9,7 +9,6 @@ const getPokemon = async (name: string) => {
 const getPokemonSpecies = async (name: string) => {
   const response = await fetch(`${baseUrl}/pokemon-species/${name}`);
   const data = await response.json();
-  getEvolutionChain(data.evolution_chain.url);
   return data;
 };
 
@@ -25,13 +24,7 @@ const getEvolutionChain = async (url: string) => {
   return data;
 };
 
-export {
-  getPokemon,
-  getPokemonSpecies,
-  getLocation,
-  getEvolutionChain,
-  // getAllPokemonData,
-};
+export { getPokemon, getPokemonSpecies, getLocation, getEvolutionChain };
 
 /**
  * Abilities /{name}
