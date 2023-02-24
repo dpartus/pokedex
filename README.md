@@ -2,7 +2,6 @@
 
 Additional features
 
-- Note: before being able to prioritize the backlog, I'd want to get feedback about the MVP to see what works for Ash & what doesn't. Moving forward, I'd recommend low fidelity prototyping first (before committing to dev work) to lower costs / waste.
 - See all Pokemon with sorting, filtering, pagination solution
 - Search by different attributes (color, type, etc) - e.g. in the event Ash does not know the Pokemon's name
 - Add new, undocumented Pokemon
