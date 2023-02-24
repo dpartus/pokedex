@@ -11,7 +11,7 @@ function SearchPage() {
 
   const handleSubmit = async (searchTerm: string) => {
     await dispatch(fetchPokemon(searchTerm));
-    navigate({ pathname: "/details/", search: `?term=${searchTerm}` });
+    navigate({ pathname: `/details/${searchTerm}` });
   };
 
   return (

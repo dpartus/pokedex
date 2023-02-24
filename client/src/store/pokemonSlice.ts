@@ -6,36 +6,19 @@ import {
   getPokemonSpecies,
 } from "../api/pokemon-api";
 
-export interface Abilities {
-  name: string;
-  url: string;
-}
-
-export interface Color {
-  name: string;
-}
-
 export interface PokemonDetails {
   id: number;
   color: string;
-  abilities: any;
-  moves: any;
+  abilities: string[];
+  moves: string[];
   evolutions: any;
-  varieties: any;
+  varieties: string[];
   gender: number;
-  types: any;
+  types: string[];
   name: string;
-  locations: any;
+  locations: string[];
   error: boolean;
   showLoading: boolean;
-  pastSearch: string[];
-}
-
-export interface Error {
-  errorMessage: string;
-}
-
-export interface PastSearch {
   pastSearch: string[];
 }
 
@@ -80,7 +63,9 @@ export const pokemonSlice = createSlice({
       } = action.payload;
       state.name = name;
       state.id = id;
-      state.abilities = abilities.map((ability: any) => ability.ability.name);
+      state.abilities = abilities.map((ability: any) =>
+        ability.ability.name.replaceAll("-", " ")
+      );
       state.moves = moves.map((move: any) =>
         move.move.name.replaceAll("-", " ")
       );

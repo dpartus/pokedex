@@ -1,7 +1,14 @@
-import { useState, ChangeEvent, useEffect } from "react";
+import {
+  useState,
+  ChangeEvent,
+  useEffect,
+  // MouseEventHandler,
+  // ButtonHTMLAttributes,
+} from "react";
 import { useAppDispatch } from "../hooks";
 import { setPastSearch } from "../store/pokemonSlice";
 import "./search.scss";
+import pokeball from "../images/pokeball.png";
 
 interface SearchProps {
   handleSubmit: any;
@@ -21,39 +28,46 @@ const Search: React.FC<SearchProps> = ({
 
   const dispatch = useAppDispatch();
 
-  const handleFocus = () => {
-    if (pastSearch.length) {
-      setShowPastSearch(true);
-    }
-  };
+  // const handleButtonClick = () => {
+  //   setShowPastSearch(!showPastSearch);
+  // };
 
-  const handleBlur = () => {
-    setShowPastSearch(false);
-  };
+  // const handleBlur = () => {
+  //   setShowPastSearch(false);
+  // };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+    setSearchTerm(event.target.value.toLocaleLowerCase());
   };
 
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    handleSubmit(searchTerm.toLocaleLowerCase());
-    dispatch(setPastSearch(searchTerm.toLocaleLowerCase()));
+
+    if (searchTerm.length) {
+      handleSubmit(searchTerm);
+      dispatch(setPastSearch(searchTerm));
+    }
   };
 
-  const testHandler = () => {
-    console.log("here");
-    handleSubmit(searchTerm.toLocaleLowerCase());
+  const handleClickSubmit = () => {
+    if (searchTerm.length) {
+      handleSubmit(searchTerm);
+      dispatch(setPastSearch(searchTerm));
+    }
   };
 
   // rename
-  const results = pastSearch.map((search) => {
-    return (
-      <ul>
-        <li onClick={testHandler}>{search}</li>
-      </ul>
-    );
-  });
+  // const results = pastSearch.map((search) => {
+  //   return (
+  //     <div className="past-search-container">
+  //       <ul>
+  //         <li onClick={testHandler}>{search}</li>
+  //       </ul>
+  //     </div>
+  //   );
+  // });
+
+  // const dropdown =
 
   return (
     <div className="search-container">
@@ -64,11 +78,19 @@ const Search: React.FC<SearchProps> = ({
           className="search-input"
           value={searchTerm}
           onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          // onFocus={handleFocus}
+          // onBlur={handleBlur}
+        />
+        <img
+          onClick={handleClickSubmit}
+          src={pokeball}
+          className="search-image"
         />
       </form>
-      {/* <div className="past-search-container">{showPastSearch && results}</div> */}
+      {/* <div className="past-search-button" onClick={handleButtonClick}>
+        Past searches
+      </div>
+      {showPastSearch && results} */}
     </div>
   );
 };

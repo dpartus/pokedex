@@ -10,7 +10,7 @@ function App() {
       <SearchPage />
       <Routes>
         <Route path="/" element={<WelcomePage />}></Route>
-        <Route path="/details/" element={<PokemonDetails />}></Route>
+        <Route path="/details/:pokemon" element={<PokemonDetails />}></Route>
       </Routes>
       <Loading />
     </div>

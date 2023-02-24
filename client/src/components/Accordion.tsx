@@ -13,13 +13,19 @@ const Accordion: React.FC<AccordionProp> = ({ title, content }) => {
     return <h4>No {title} are available</h4>;
   }
 
+  const orderedContent = content.map((item) => {
+    return <p>{item}</p>;
+  });
+
   return (
     <div className="accordion-item">
       <div className="accordion-header" onClick={() => setIsActive(!isActive)}>
         <h3>{title}</h3>
         <div>{isActive ? "-" : "+"}</div>
       </div>
-      {isActive && <div className="accordion-content">{content}</div>}
+      {isActive && (
+        <div className="accordion-content">{content.join(", ")}</div>
+      )}
     </div>
   );
 };

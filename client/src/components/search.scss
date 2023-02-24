@@ -12,6 +12,14 @@
   width: 96%;
 }
 
+.search-image {
+  width: 28px;
+  position: absolute;
+  right: 35px;
+  top: 30px;
+  cursor: pointer;
+}
+
 input[type="text"] {
   font-family: "M PLUS 1p";
   font-size: 16px;
@@ -22,4 +30,17 @@ input[type="text"] {
   border-radius: 5px;
   margin-top: -2px;
   padding: 5px 0;
+}
+.past-search-button {
+  background-color: var(--blue-green);
+  border-radius: 5px;
+  border: 1px;
+  color: var(--white);
+  font-family: "M PLUS 1p";
+  font-size: 12px;
+  position: absolute;
+  right: 36px;
+  top: 32px;
+  padding: 5px;
+  cursor: pointer;
 }

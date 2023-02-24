@@ -5,12 +5,11 @@ import Table from "./Table";
 import Accordion from "./Accordion";
 import { useEffect } from "react";
 import { fetchPokemon } from "../store/pokemonSlice";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ErrorPage from "../pages/ErrorPage";
 
 function PokemonDetails() {
-  const [searchParams] = useSearchParams();
-  const searchTerm = searchParams.get("term") as string;
+  const { pokemon } = useParams();
 
   const dispatch = useAppDispatch();
 
@@ -22,9 +21,13 @@ function PokemonDetails() {
     state.pokemon.error,
   ]);
 
+  const capitalName = (name: string) => {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  };
+
   useEffect(() => {
-    dispatch(fetchPokemon(searchTerm));
-  }, []);
+    dispatch(fetchPokemon(pokemon as string));
+  }, [pokemon]);
 
   if (error) {
     return <ErrorPage />;
@@ -32,7 +35,7 @@ function PokemonDetails() {
 
   return (
     <div>
-      <h1 className="pokemon-name">{name}</h1>
+      <h1 className="pokemon-name">{capitalName(name)}</h1>
       <section className="pokemon-details-container">
         <div className="image-container">
           <PokemonImage id={id} />
