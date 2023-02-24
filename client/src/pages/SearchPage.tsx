@@ -4,12 +4,13 @@ import { fetchPokemon } from "../store/pokemonSlice";
 import { useNavigate } from "react-router-dom";
 
 function SearchPage() {
-  const error = useAppSelector((state) => state.pokemon.error);
+  const pastSearch = useAppSelector((state) => state.pokemon.pastSearch);
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const handleSubmit = async (searchTerm: string) => {
-    const test = await dispatch(fetchPokemon(searchTerm));
+    await dispatch(fetchPokemon(searchTerm));
     navigate({ pathname: "/details/", search: `?term=${searchTerm}` });
   };
 
@@ -17,6 +18,7 @@ function SearchPage() {
     <div>
       <Search
         handleSubmit={handleSubmit}
+        pastSearch={pastSearch}
         placeholderText="Search for any Pokemon!"
       />
     </div>

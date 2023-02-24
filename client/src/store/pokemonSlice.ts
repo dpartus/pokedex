@@ -28,10 +28,15 @@ export interface PokemonDetails {
   locations: any;
   error: boolean;
   showLoading: boolean;
+  pastSearch: string[];
 }
 
 export interface Error {
   errorMessage: string;
+}
+
+export interface PastSearch {
+  pastSearch: string[];
 }
 
 const initialState = {
@@ -48,14 +53,15 @@ const initialState = {
   pokemonEvolution: [],
   error: false,
   showLoading: false,
+  pastSearch: [],
 } as PokemonDetails;
 
 export const pokemonSlice = createSlice({
   name: "pokemon",
   initialState,
   reducers: {
-    setColor: (state, action: PayloadAction<string>) => {
-      state.color = action.payload;
+    setPastSearch: (state, action: PayloadAction<string>) => {
+      state.pastSearch.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -89,9 +95,11 @@ export const pokemonSlice = createSlice({
       state.gender = gender_rate;
       state.evolutions = pokemonEvolution.chain;
       state.showLoading = false;
+      state.error = false;
     });
     builder.addCase(fetchPokemon.rejected, (state, action) => {
       console.log(action.error);
+      state.showLoading = false;
       state.error = true;
     });
     builder.addCase(fetchPokemon.pending, (state) => {
@@ -100,7 +108,7 @@ export const pokemonSlice = createSlice({
   },
 });
 
-export const { setColor } = pokemonSlice.actions;
+export const { setPastSearch } = pokemonSlice.actions;
 export default pokemonSlice.reducer;
 
 export const fetchPokemon = createAsyncThunk(

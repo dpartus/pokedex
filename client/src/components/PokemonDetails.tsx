@@ -6,6 +6,7 @@ import Accordion from "./Accordion";
 import { useEffect } from "react";
 import { fetchPokemon } from "../store/pokemonSlice";
 import { useSearchParams } from "react-router-dom";
+import ErrorPage from "../pages/ErrorPage";
 
 function PokemonDetails() {
   const [searchParams] = useSearchParams();
@@ -13,20 +14,25 @@ function PokemonDetails() {
 
   const dispatch = useAppDispatch();
 
-  const [id, moves, name, locations] = useAppSelector((state) => [
+  const [id, moves, name, locations, error] = useAppSelector((state) => [
     state.pokemon.id,
     state.pokemon.moves,
     state.pokemon.name,
     state.pokemon.locations,
+    state.pokemon.error,
   ]);
 
   useEffect(() => {
     dispatch(fetchPokemon(searchTerm));
   }, []);
 
+  if (error) {
+    return <ErrorPage />;
+  }
+
   return (
     <div>
-      <h1>{name}</h1>
+      <h1 className="pokemon-name">{name}</h1>
       <section className="pokemon-details-container">
         <div className="image-container">
           <PokemonImage id={id} />

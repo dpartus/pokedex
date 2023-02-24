@@ -1,3 +1,20 @@
 .pokemon-details-container {
   display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.pokemon-name {
+  background-color: var(--red);
+  border-radius: 5px;
+  color: var(--white);
+  padding: 10px;
+}
+
+@media screen and (max-width: 950px) {
+  .pokemon-details-container {
+    align-items: center;
+    flex-direction: column;
+  }
 }

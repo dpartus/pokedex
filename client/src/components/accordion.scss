@@ -1,0 +1,17 @@
+.accordion-item {
+  margin-bottom: 10px;
+  h3 {
+    margin: 0;
+    color: var(--white);
+  }
+}
+
+.accordion-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: var(--blue-green);
+  border-radius: 5px;
+  padding: 10px;
+}

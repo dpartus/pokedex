@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import "./pill.scss";
 
 interface PillProp {
-  label: string;
+  label: string | ReactNode;
   color?: string;
 }
 

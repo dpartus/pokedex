@@ -1,6 +1,8 @@
 import { useAppSelector } from "../hooks";
 import Pill from "./Pill";
 import "./table.scss";
+import mars from "../images/mars.png";
+import venus from "../images/venus.png";
 
 function Table() {
   const [color, gender, abilities, types, varieties] = useAppSelector(
@@ -12,6 +14,26 @@ function Table() {
       state.pokemon.varieties,
     ]
   );
+  const typeColors: any = {
+    normal: "#A8A77A",
+    fire: "#EE8130",
+    water: "#6390F0",
+    electric: "#F7D02C",
+    grass: "#7AC74C",
+    ice: "#96D9D6",
+    fighting: "#C22E28",
+    poison: "#A33EA1",
+    ground: "#E2BF65",
+    flying: "#A98FF3",
+    psychic: "#F95587",
+    bug: "#A6B91A",
+    rock: "#B6A136",
+    ghost: "#735797",
+    dragon: "#6F35FC",
+    dark: "#705746",
+    steel: "#B7B7CE",
+    fairy: "#D685AD",
+  };
 
   // -1 genderless, 0 all male, 8 all female, anything in between both female and male
   const genderCalc = () => {
@@ -19,7 +41,7 @@ function Table() {
       case -1:
         return "Genderless";
       case 0:
-        return "Male";
+        return <img className="gender-symbol" src={mars} />;
       case 8:
         return "Female";
       default:
@@ -41,7 +63,7 @@ function Table() {
       <div className="sub-info">
         <h5>Type</h5>
         {types.map((type: string) => {
-          return <Pill label={type} />;
+          return <Pill label={type} color={typeColors[type]} />;
         })}
       </div>
       <hr />
