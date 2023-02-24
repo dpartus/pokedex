@@ -6,8 +6,8 @@ function WelcomePage() {
         <img src={logo} />
       </div>
       <p>
-        Welcome to the newest version of the Pokedex! Although it is not fully
-        up to specs with the old Pokedex, I am sure you will be able to find a
+        Welcome Ash and Friends to the newest version of your Pokedex! Although
+        it is not fully up to spec with the old Pokedex, you will still find a
         lot of useful information.
       </p>
       <p>
@@ -26,7 +26,7 @@ function WelcomePage() {
       </ul>
       <p>
         We would love to hear what you think of the new Pokedex, so please let
-        us know{" "}
+        us know:{" "}
         <a href="mailto: daniel.artus11@gmail.com">
           Pokedex Unlimited Software Solutions
         </a>

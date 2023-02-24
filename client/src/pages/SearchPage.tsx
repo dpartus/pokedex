@@ -19,7 +19,7 @@ function SearchPage() {
       <Search
         handleSubmit={handleSubmit}
         pastSearch={pastSearch}
-        placeholderText="Search for any Pokemon!"
+        placeholderText="Search for any Pokemon"
       />
     </div>
   );

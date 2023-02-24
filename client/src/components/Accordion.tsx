@@ -13,10 +13,6 @@ const Accordion: React.FC<AccordionProp> = ({ title, content }) => {
     return <h4>No {title} are available</h4>;
   }
 
-  const orderedContent = content.map((item) => {
-    return <p>{item}</p>;
-  });
-
   return (
     <div className="accordion-item">
       <div className="accordion-header" onClick={() => setIsActive(!isActive)}>
