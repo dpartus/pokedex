@@ -87,7 +87,7 @@ const Search: React.FC<SearchProps> = ({
   });
 
   return (
-    <div ref={refElement} className="search-container">
+    <header ref={refElement} className="search-container">
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"
@@ -100,12 +100,13 @@ const Search: React.FC<SearchProps> = ({
         <img
           onClick={handleClickSubmit}
           src={pokeball}
+          alt="pokeball"
           className="search-image"
         />
       </form>
 
       {showPastSearch && <div className="past-search-container">{recent}</div>}
-    </div>
+    </header>
   );
 };
 

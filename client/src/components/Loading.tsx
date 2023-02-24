@@ -6,7 +6,11 @@ function Loading() {
   const showLoading = useAppSelector((state) => state.pokemon.showLoading);
 
   return (
-    <div>{showLoading && <img className="loading-image" src={pokeball} />}</div>
+    <div>
+      {showLoading && (
+        <img className="loading-image" src={pokeball} alt="pokeball" />
+      )}
+    </div>
   );
 }
 

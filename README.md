@@ -19,6 +19,7 @@ Assumptions on use cases
 - Assumed Ash and friends predominantly use mobile phone (mobile-first design)
 
 Other technologies to use
+
 -Google Analytics or comparable tool to get critical site usage data
 -integrate the "give feedback" feature with JIRA/git/ADO (work mgmt tool) instead of email
 

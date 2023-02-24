@@ -3,7 +3,7 @@ function WelcomePage() {
   return (
     <div className="welcome-main">
       <div className="welcome-page-container">
-        <img src={logo} />
+        <img alt="logo" src={logo} />
       </div>
       <p>
         Welcome Ash and Friends to the newest version of your Pokedex! Although

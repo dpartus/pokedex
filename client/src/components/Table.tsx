@@ -1,7 +1,6 @@
 import { useAppSelector } from "../hooks";
 import Pill from "./Pill";
 import "./table.scss";
-import mars from "../images/mars.png";
 
 function Table() {
   const [color, gender, abilities, types, varieties] = useAppSelector(
@@ -64,21 +63,21 @@ function Table() {
       <div className="sub-info">
         <h5>Type</h5>
         {types.map((type: string) => {
-          return <Pill label={type} color={typeColors[type]} />;
+          return <Pill key={type} label={type} color={typeColors[type]} />;
         })}
       </div>
       <hr />
       <div className="sub-info">
         <h5>Abilities</h5>
         {abilities.map((ability: string) => {
-          return <Pill label={ability} />;
+          return <Pill key={ability} label={ability} />;
         })}
       </div>
       <hr />
       <div className="sub-info">
         <h5>Varieties</h5>
         {varieties.map((variety: string) => {
-          return <Pill label={variety} />;
+          return <Pill key={variety} label={variety} />;
         })}
       </div>
     </div>
