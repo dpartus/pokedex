@@ -35,8 +35,22 @@ body {
   height: 100%;
 }
 
+// error page styles
+.error-page-container {
+  text-align: center;
+}
+
+// welcome page styles
+.welcome-page-container {
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-main {
+  margin: 40px;
+}
 @media screen and (max-width: 950px) {
   .main {
-    margin: 0 20px;
+    margin: 0 60px;
   }
 }

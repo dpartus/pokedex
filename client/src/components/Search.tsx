@@ -62,6 +62,7 @@ const Search: React.FC<SearchProps> = ({
     if (searchTerm.length) {
       handleSubmit(searchTerm);
       dispatch(setPastSearch(searchTerm));
+      setShowPastSearch(false);
     }
   };
 
@@ -69,6 +70,7 @@ const Search: React.FC<SearchProps> = ({
     if (searchTerm.length) {
       handleSubmit(searchTerm);
       dispatch(setPastSearch(searchTerm));
+      setShowPastSearch(false);
     }
   };
 
@@ -76,7 +78,6 @@ const Search: React.FC<SearchProps> = ({
     handleSubmit(term);
   };
 
-  // rename
   const recent = pastSearch.map((search) => {
     return (
       <ul>
@@ -84,8 +85,6 @@ const Search: React.FC<SearchProps> = ({
       </ul>
     );
   });
-
-  // const dropdown =
 
   return (
     <div ref={refElement} className="search-container">

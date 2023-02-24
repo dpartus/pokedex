@@ -21,7 +21,7 @@ const Accordion: React.FC<AccordionProp> = ({ title, content }) => {
     <div className="accordion-item">
       <div className="accordion-header" onClick={() => setIsActive(!isActive)}>
         <h3>{title}</h3>
-        <div>{isActive ? "-" : "+"}</div>
+        <div className="accordion-active">{isActive ? "-" : "+"}</div>
       </div>
       {isActive && (
         <div className="accordion-content">{content.join(", ")}</div>
