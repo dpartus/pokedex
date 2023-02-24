@@ -2,7 +2,6 @@ import { useAppSelector } from "../hooks";
 import Pill from "./Pill";
 import "./table.scss";
 import mars from "../images/mars.png";
-import venus from "../images/venus.png";
 
 function Table() {
   const [color, gender, abilities, types, varieties] = useAppSelector(
@@ -14,6 +13,8 @@ function Table() {
       state.pokemon.varieties,
     ]
   );
+
+  // pulled from https://gist.github.com/apaleslimghost/0d25ec801ca4fc43317bcff298af43c3
   const typeColors: any = {
     normal: "#A8A77A",
     fire: "#EE8130",
@@ -39,13 +40,13 @@ function Table() {
   const genderCalc = () => {
     switch (gender) {
       case -1:
-        return "Genderless";
+        return "genderless";
       case 0:
-        return <img className="gender-symbol" src={mars} />;
+        return "male";
       case 8:
-        return "Female";
+        return "female";
       default:
-        return "Male/Female";
+        return "male/female";
     }
   };
   return (

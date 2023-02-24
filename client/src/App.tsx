@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Loading from "./components/Loading";
-import PokemonDetails from "./components/PokemonDetails";
+import PokemonDetails from "./pages/PokemonDetails";
 import SearchPage from "./pages/SearchPage";
 import WelcomePage from "./pages/WelcomePage";
 

@@ -1,12 +1,13 @@
 import { useAppDispatch, useAppSelector } from "../hooks";
-import PokemonImage from "./PokemonImage";
-import "./pokemon-details.scss";
-import Table from "./Table";
-import Accordion from "./Accordion";
+import PokemonImage from "../components/PokemonImage";
+import "../components/pokemon-details.scss";
+import Table from "../components/Table";
+import Accordion from "../components/Accordion";
 import { useEffect } from "react";
 import { fetchPokemon } from "../store/pokemonSlice";
 import { useParams } from "react-router-dom";
-import ErrorPage from "../pages/ErrorPage";
+import ErrorPage from "./ErrorPage";
+import PokemonEvolutions from "../components/PokemonEvolution";
 
 function PokemonDetails() {
   const { pokemon } = useParams();
@@ -42,6 +43,7 @@ function PokemonDetails() {
         </div>
         <Table />
       </section>
+      <PokemonEvolutions />
       <Accordion title="Moves" content={moves} />
       <Accordion title="Locations" content={locations} />
     </div>

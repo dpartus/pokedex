@@ -2,6 +2,7 @@ import {
   useState,
   ChangeEvent,
   useEffect,
+  useRef,
   // MouseEventHandler,
   // ButtonHTMLAttributes,
 } from "react";
@@ -22,19 +23,34 @@ const Search: React.FC<SearchProps> = ({
   pastSearch,
 }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [showPastSearch, setShowPastSearch] = useState<boolean>(true);
+  const [showPastSearch, setShowPastSearch] = useState<boolean>(false);
+  const refElement = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {}, [showPastSearch]);
+  useEffect(() => {
+    // handles closing past search results when use clicks outside of element
+    const handler = (event: any) => {
+      if (!refElement.current) {
+        return;
+      }
+
+      if (!refElement.current.contains(event.target)) {
+        setShowPastSearch(false);
+      }
+    };
+    document.addEventListener("click", handler, true);
+
+    return () => {
+      document.removeEventListener("click", handler);
+    };
+  }, []);
 
   const dispatch = useAppDispatch();
 
-  // const handleButtonClick = () => {
-  //   setShowPastSearch(!showPastSearch);
-  // };
-
-  // const handleBlur = () => {
-  //   setShowPastSearch(false);
-  // };
+  const handleFocus = () => {
+    if (pastSearch.length) {
+      setShowPastSearch(true);
+    }
+  };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value.toLocaleLowerCase());
@@ -56,21 +72,23 @@ const Search: React.FC<SearchProps> = ({
     }
   };
 
+  const handleRecentSearchSubmit = (term: string) => {
+    handleSubmit(term);
+  };
+
   // rename
-  // const results = pastSearch.map((search) => {
-  //   return (
-  //     <div className="past-search-container">
-  //       <ul>
-  //         <li onClick={testHandler}>{search}</li>
-  //       </ul>
-  //     </div>
-  //   );
-  // });
+  const recent = pastSearch.map((search) => {
+    return (
+      <ul>
+        <li onClick={() => handleRecentSearchSubmit(search)}>{search}</li>
+      </ul>
+    );
+  });
 
   // const dropdown =
 
   return (
-    <div className="search-container">
+    <div ref={refElement} className="search-container">
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"
@@ -78,8 +96,7 @@ const Search: React.FC<SearchProps> = ({
           className="search-input"
           value={searchTerm}
           onChange={handleChange}
-          // onFocus={handleFocus}
-          // onBlur={handleBlur}
+          onFocus={handleFocus}
         />
         <img
           onClick={handleClickSubmit}
@@ -87,10 +104,8 @@ const Search: React.FC<SearchProps> = ({
           className="search-image"
         />
       </form>
-      {/* <div className="past-search-button" onClick={handleButtonClick}>
-        Past searches
-      </div>
-      {showPastSearch && results} */}
+
+      {showPastSearch && <div className="past-search-container">{recent}</div>}
     </div>
   );
 };

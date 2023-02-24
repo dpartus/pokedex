@@ -1,0 +1,20 @@
+.pokemon-evolutions-container {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.evolution-image {
+  width: 150px;
+  &:hover {
+    background-color: var(--orange);
+    border-radius: 5px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .pokemon-evolutions-container {
+    align-items: center;
+    flex-direction: column;
+  }
+}

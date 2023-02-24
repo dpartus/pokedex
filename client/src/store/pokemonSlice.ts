@@ -78,12 +78,11 @@ export const pokemonSlice = createSlice({
         variety.pokemon.name.replaceAll("-", " ")
       );
       state.gender = gender_rate;
-      state.evolutions = pokemonEvolution.chain;
+      state.evolutions = pokemonEvolution;
       state.showLoading = false;
       state.error = false;
     });
     builder.addCase(fetchPokemon.rejected, (state, action) => {
-      console.log(action.error);
       state.showLoading = false;
       state.error = true;
     });
