@@ -76,6 +76,7 @@ const Search: React.FC<SearchProps> = ({
 
   const handleRecentSearchSubmit = (term: string) => {
     handleSubmit(term);
+    setShowPastSearch(false);
   };
 
   const recent = pastSearch.map((search) => {
