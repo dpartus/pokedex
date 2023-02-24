@@ -1,5 +1,5 @@
 import App from "../../App";
-import { render, fireEvent, screen } from "../../test-utils";
+import { render, screen } from "../../test-utils";
 
 test("should App", () => {
   render(<App />);
