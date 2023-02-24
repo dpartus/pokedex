@@ -5,19 +5,30 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+
+  form {
+    display: flex;
+  }
+  img {
+    &:hover {
+      background-color: var(--red);
+      border-radius: 5px;
+    }
+  }
 }
 .search-input {
   border-radius: 12px;
+  margin-left: 20px;
   padding: 10px;
   width: 97%;
 }
 
 .search-image {
-  width: 28px;
+  cursor: pointer;
   position: absolute;
   right: 35px;
   top: 30px;
-  cursor: pointer;
+  width: 28px;
 }
 
 input[type="text"] {
@@ -26,12 +37,13 @@ input[type="text"] {
 }
 
 .past-search-container {
-  position: absolute;
+  align-items: center;
   background-color: white;
   border-radius: 5px;
+  margin-left: 70px;
   padding: 10px;
-  width: 92%;
-  align-items: center;
+  position: absolute;
+
   ul {
     list-style-type: none;
     margin: 0;
@@ -40,6 +52,7 @@ input[type="text"] {
   li {
     cursor: pointer;
     padding: 5px;
+
     &:hover {
       background-color: var(--orange);
       border-radius: 5px;
@@ -51,11 +64,11 @@ input[type="text"] {
   border-radius: 5px;
   border: 1px;
   color: var(--white);
+  cursor: pointer;
   font-family: "M PLUS 1p";
   font-size: 12px;
+  padding: 5px;
   position: absolute;
   right: 36px;
   top: 32px;
-  padding: 5px;
-  cursor: pointer;
 }

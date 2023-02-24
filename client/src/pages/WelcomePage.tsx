@@ -6,7 +6,7 @@ function WelcomePage() {
         <img alt="logo" src={logo} />
       </div>
       <p>
-        Welcome Ash and Friends to the newest version of your Pokedex! Although
+        Welcome Ash and friends to the newest version of your Pokedex! Although
         it is not fully up to spec with the old Pokedex, you will still find a
         lot of useful information.
       </p>
