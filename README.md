@@ -20,8 +20,8 @@ Assumptions on use cases
 
 Other technologies to use
 
--Google Analytics or comparable tool to get critical site usage data
--integrate the "give feedback" feature with JIRA/git/ADO (work mgmt tool) instead of email
+- Google Analytics or comparable tool to get critical site usage data
+- integrate the "give feedback" feature with JIRA/git/ADO (work mgmt tool) instead of email
 
 Performance concerns
 
