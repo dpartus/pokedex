@@ -11,6 +11,11 @@ function PokemonEvolutions() {
     const link = evolution.url;
     const id = link.split("pokemon-species/").pop().replace("/", "");
 
+    // eventually move this to a helper to use in different files
+    const capitalName = (name: string) => {
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    };
+
     return (
       <div>
         <Link to={`/details/${evolution.name}`}>
@@ -20,7 +25,7 @@ function PokemonEvolutions() {
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
           />
         </Link>
-        <h3>{evolution.name}</h3>
+        <h3>{capitalName(evolution.name)}</h3>
       </div>
     );
   });
