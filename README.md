@@ -31,3 +31,4 @@ Visual enhancements
 
 - Improve overall design (I am not the best designer. I tried to leverage Pokemon colors, but a bit softer)
 - Improve the display of large lists (moves and location)
+- Revisit hover and focus state

@@ -8,8 +8,7 @@
   width: 150px;
 
   &:hover {
-    background-color: var(--orange);
-    border-radius: 5px;
+    transform: scale(1.1);
   }
 }
 

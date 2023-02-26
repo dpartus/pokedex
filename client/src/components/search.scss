@@ -5,15 +5,8 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-
   form {
     display: flex;
-  }
-  img {
-    &:hover {
-      background-color: var(--red);
-      border-radius: 5px;
-    }
   }
 }
 .search-input {
@@ -29,6 +22,16 @@
   right: 35px;
   top: 30px;
   width: 28px;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.logo {
+  max-width: 35px;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 input[type="text"] {

@@ -10,7 +10,7 @@ import { useAppDispatch } from "../hooks";
 import { setPastSearch } from "../store/pokemonSlice";
 import "./search.scss";
 import pokeball from "../images/pokeball.png";
-import home from "../images/home.png";
+import logo from "../images/logo.png";
 import { Link } from "react-router-dom";
 
 interface SearchProps {
@@ -93,7 +93,7 @@ const Search: React.FC<SearchProps> = ({
     <header ref={refElement} className="search-container">
       <form onSubmit={handleFormSubmit}>
         <Link to="/">
-          <img src={home} alt="home" />
+          <img className="logo" src={logo} alt="home" />
         </Link>
 
         <input
